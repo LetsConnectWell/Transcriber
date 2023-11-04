@@ -27,8 +27,9 @@ pip install -r requirements.txt
 ```
 ## Usage 
 
+Put the audio file you want to transcribe in the same folder and run
 ```
-python diarize.py -a AUDIO_FILE_NAME
+python diarize.py -a "audio.mp3"
 ```
 
 ## Command Line Options
