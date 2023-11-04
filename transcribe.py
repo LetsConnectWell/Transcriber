@@ -14,9 +14,9 @@ import glob
 
 # Initialize parser
 parser = argparse.ArgumentParser()
-parser.add_argument(
-    "-a", "--audio", help="name of the target audio file", required=True
-)
+# parser.add_argument(
+#     "-a", "--audio", help="name of the target audio file", required=True
+# )
 parser.add_argument(
     "--no-stem",
     action="store_false",
