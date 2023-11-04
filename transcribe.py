@@ -12,51 +12,51 @@ import logging
 import os
 import glob
 
+# Initialize parser
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    "-a", "--audio", help="name of the target audio file", required=True
+)
+parser.add_argument(
+    "--no-stem",
+    action="store_false",
+    dest="stemming",
+    default=True,
+    help="Disables source separation."
+    "This helps with long files that don't contain a lot of music.",
+)
+
+parser.add_argument(
+    "--suppress_numerals",
+    action="store_true",
+    dest="suppress_numerals",
+    default=False,
+    help="Suppresses Numerical Digits."
+    "This helps the diarization accuracy but converts all digits into written text.",
+)
+
+parser.add_argument(
+    "--whisper-model",
+    dest="model_name",
+    default="medium.en",
+    help="name of the Whisper model to use",
+)
+
+parser.add_argument(
+    "--device",
+    dest="device",
+    default="cuda" if torch.cuda.is_available() else "cpu",
+    help="if you have a GPU use 'cuda', otherwise 'cpu'",
+)
+
+args = parser.parse_args()
+
 # Get a list of all audio files
 audio_files = glob.glob("audio/*.[mM][pP]3") + glob.glob("audio/*.[mM][pP]4") + glob.glob("audio/*.[mM]4[aA]") + glob.glob("audio/*.[wW][aA][vV]")
 
 for audio_file in audio_files:
     args.audio = audio_file
     mtypes = {"cpu": "int8", "cuda": "float16"}
-
-    # Initialize parser
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "-a", "--audio", help="name of the target audio file", required=True
-    )
-    parser.add_argument(
-        "--no-stem",
-        action="store_false",
-        dest="stemming",
-        default=True,
-        help="Disables source separation."
-        "This helps with long files that don't contain a lot of music.",
-    )
-
-    parser.add_argument(
-        "--suppress_numerals",
-        action="store_true",
-        dest="suppress_numerals",
-        default=False,
-        help="Suppresses Numerical Digits."
-        "This helps the diarization accuracy but converts all digits into written text.",
-    )
-
-    parser.add_argument(
-        "--whisper-model",
-        dest="model_name",
-        default="medium.en",
-        help="name of the Whisper model to use",
-    )
-
-    parser.add_argument(
-        "--device",
-        dest="device",
-        default="cuda" if torch.cuda.is_available() else "cpu",
-        help="if you have a GPU use 'cuda', otherwise 'cpu'",
-    )
-
-    args = parser.parse_args()
 
     if args.stemming:
         # Isolate vocals from the rest of the audio
