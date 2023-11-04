@@ -1,7 +1,9 @@
 # Whisper-based Transriber with Speaker Identification
 
 ## Setup
-`FFMPEG` and `Cython` are needed as prerquisites to install the requirements. You will also need an computer with NVIDA GPU that supports CUDA.
+`FFMPEG` and `Cython` are needed as prerquisites to install the requirements. 
+
+You will also need an computer with NVIDA GPU that supports CUDA.
 ```
 pip install cython
 ```
