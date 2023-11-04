@@ -1,4 +1,4 @@
-# Whisper-based audio to text transcriber with speaker identification
+# Whisper-based Transriber with Speaker Identification
 
 ## Setup
 `FFMPEG` and `Cython` are needed as prerquisites to install the requirements. You will also need an computer with NVIDA GPU that supports CUDA.
