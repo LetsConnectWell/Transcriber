@@ -28,7 +28,8 @@ pip install -r requirements.txt
 
 ## Usage 
 
-Put the audio file you want to transcribe in the audio folder and run. The scripts should be saved in the transcripts folder
+Put the audio file you want to transcribe in the *audio* folder and run. 
 ```
 python transcribe.py
 ```
+The scripts should be saved in the *transcripts* folder
