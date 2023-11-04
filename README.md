@@ -1,7 +1,7 @@
 # Whisper-based audio to text transcriber with speaker identification
 
 ## Setup
-`FFMPEG` and `Cython` are needed as prerquisites to install the requirements
+`FFMPEG` and `Cython` are needed as prerquisites to install the requirements. You will also need an computer with NVIDA GPU that supports CUDA.
 ```
 pip install cython
 ```
@@ -25,16 +25,10 @@ scoop install ffmpeg
 ```
 pip install -r requirements.txt
 ```
+
 ## Usage 
 
-Put the audio file you want to transcribe in the same folder and run
+Put the audio file you want to transcribe in the audio folder and run. The scripts should be saved in the transcripts folder
 ```
-python diarize.py -a "audio.mp3"
+python transcribe.py
 ```
-
-## Command Line Options
-
-- `-a AUDIO_FILE_NAME`: The name of the audio file to be processed
-- `--no-stem`: Disables source separation
-- `--whisper-model`: The model to be used for ASR, default is `medium.en`
-- `--suppress_numerals`: Transcribes numbers in their pronounced letters instead of digits, improves alignment accuracy
